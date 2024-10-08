@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrophotometry: Blue Sample Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            width: 800px;
+        }
+        .spectrophotometer {
+            width: 100%;
+            height: 200px;
+            margin: 20px 0;
+        }
+        .explanation {
+            text-align: left;
+            margin: 20px 0;
+        }
+        #histogram {
+            width: 100%;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>5. Spectrophotometry: Blue Sample Analysis</h1>
+        
+        <div class="explanation">
+            <p>When a blue sample is introduced, it absorbs light in the yellow-red region of the spectrum, allowing blue light to pass through. This changes the spectral pattern detected by the AS7341 sensor.</p>
+        </div>
+
+        <svg class="spectrophotometer" viewBox="0 0 800 200">
+            <rect x="50" y="50" width="100" height="100" fill="#FFFFFF" stroke="#000000" />
+            <text x="100" y="170" text-anchor="middle">LED Light Source</text>
+            
+            <rect x="250" y="75" width="50" height="50" fill="#0000FF" stroke="#000000" />
+            <text x="275" y="145" text-anchor="middle">Blue Sample</text>
+            
+            <rect x="400" y="50" width="100" height="100" fill="#0000FF" stroke="#000000" />
+            <text x="450" y="170" text-anchor="middle">AS7341 Detector</text>
+            
+            <rect x="600" y="25" width="150" height="150" fill="#FFFFCC" stroke="#000000" />
+            <text x="675" y="190" text-anchor="middle">OLED Display</text>
+            
+            <line x1="150" y1="100" x2="250" y2="100" stroke="black" stroke-width="2" />
+            <line x1="300" y1="100" x2="400" y2="100" stroke="black" stroke-width="2" />
+            <line x1="500" y1="100" x2="600" y2="100" stroke="black" stroke-width="2" />
+        </svg>
+
+        <div class="connection">
+            <h3>AS7341 Spectral Sensor Output with Blue Sample (Monochrome OLED Display):</h3>
+            <canvas id="histogram"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('histogram').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['415nm', '445nm', '480nm', '515nm', '555nm', '590nm', '630nm', '680nm'],
+                datasets: [{
+                    label: 'Light Intensity',
+                    data: [60, 70, 85, 50, 30, 20, 15, 10],
+                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                    borderColor: 'rgba(0, 0, 0, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Relative Intensity'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Wavelength (nm)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
