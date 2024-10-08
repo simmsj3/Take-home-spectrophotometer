@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waves and Vibrations: From Molecules to Light</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            width: 600px;
+        }
+        .wave-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .tuning-fork, .molecule {
+            width: 100px;
+            height: 100px;
+        }
+        .wave {
+            width: 300px;
+            height: 50px;
+        }
+        .wave-container {
+            position: relative;
+        }
+        .wavelength, .frequency {
+            position: absolute;
+            opacity: 0;
+        }
+        .wavelength {
+            bottom: -30px;
+            left: 75px;
+            width: 150px;
+            height: 20px;
+            border-left: 2px solid #FF4136;
+            border-right: 2px solid #FF4136;
+        }
+        .wavelength::after {
+            content: "Wavelength";
+            position: absolute;
+            bottom: -25px;
+            left: 40px;
+            color: #FF4136;
+            font-size: 12px;
+        }
+        .frequency {
+            top: 0;
+            left: 150px;
+            width: 2px;
+            height: 50px;
+            background-color: #0074D9;
+        }
+        .frequency::before, .frequency::after {
+            content: "";
+            position: absolute;
+            left: -4px;
+            width: 10px;
+            height: 2px;
+            background-color: #0074D9;
+        }
+        .frequency::before { top: 0; }
+        .frequency::after { bottom: 0; }
+        .frequency-label {
+            position: absolute;
+            top: -20px;
+            left: -30px;
+            color: #0074D9;
+            font-size: 12px;
+        }
+        .spectrum {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to right, #8B00FF, #0000FF, #00FF00, #FFFF00, #FF7F00, #FF0000);
+            margin: 40px auto 20px;
+            opacity: 0;
+        }
+        .energy-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            opacity: 0;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Waves and Vibrations: From Molecules to Light</h1>
+        
+        <h2>1. Mechanical Waves: Tuning Fork</h2>
+        <div class="wave-section">
+            <svg class="tuning-fork" viewBox="0 0 100 100">
+                <path d="M40,100 V30 H30 V10 H70 V30 H60 V100" fill="#666"/>
+            </svg>
+            <svg class="wave sound-wave" viewBox="0 0 300 50">
+                <path d="M0,25 Q37.5,0 75,25 T150,25 T225,25 T300,25" fill="none" stroke="#666" stroke-width="2"/>
+            </svg>
+        </div>
+        
+        <h2>2. Electromagnetic Waves: Molecular Vibrations and Light</h2>
+        <div class="wave-section">
+            <svg class="molecule" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="20" fill="#ff9999"/>
+                <circle cx="50" cy="50" r="5" fill="#cc0000"/>
+            </svg>
+            <div class="wave-container">
+                <svg class="wave light-wave" viewBox="0 0 300 50">
+                    <path d="M0,25 Q37.5,0 75,25 T150,25 T225,25 T300,25" fill="none" stroke="#000" stroke-width="2"/>
+                </svg>
+                <div class="wavelength"></div>
+                <div class="frequency">
+                    <span class="frequency-label">Frequency</span>
+                </div>
+            </div>
+        </div>
+        
+        <h2>3. Visible Light Spectrum</h2>
+        <div class="spectrum"></div>
+        <div class="energy-scale">
+            <span>Higher Energy</span>
+            <span>Lower Energy</span>
+        </div>
+    </div>
+
+    <script>
+        // Tuning fork animation
+        gsap.to(".tuning-fork", {duration: 0.2, rotate: 1, transformOrigin: "50% 100%", yoyo: true, repeat: -1});
+        
+        // Slow down sound wave animation
+        gsap.to(".sound-wave path", {duration: 2, attr: {d: "M0,25 Q37.5,50 75,25 T150,25 T225,25 T300,25"}, yoyo: true, repeat: -1, ease: "sine.inOut"});
+
+        // Molecule vibration
+        gsap.to(".molecule circle:first-child", {duration: 0.5, scaleX: 1.1, scaleY: 0.9, transformOrigin: "50% 50%", yoyo: true, repeat: -1});
+
+        // Speed up light wave animation
+        gsap.to(".light-wave path", {duration: 0.5, attr: {d: "M0,25 Q37.5,50 75,25 T150,25 T225,25 T300,25"}, yoyo: true, repeat: -1, ease: "sine.inOut"});
+        
+        // Sequenced appearance of elements
+        gsap.to(".wavelength", {duration: 1, opacity: 1, delay: 1});
+        gsap.to(".frequency", {duration: 1, opacity: 1, delay: 2});
+        gsap.to(".spectrum", {duration: 1, opacity: 1, delay: 3});
+        gsap.to(".energy-scale", {duration: 1, opacity: 1, delay: 4});
+    </script>
+</body>
+</html>
