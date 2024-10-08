@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Refraction: AS7341 Wavelengths</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Light Refraction: AS7341 Wavelengths</h1>
+        <svg width="1000" height="600" viewBox="0 0 1000 600">
+            <!-- Background -->
+            <rect x="0" y="0" width="1000" height="600" fill="#ffffff"/>
+            
+            <!-- Dividing line between air and water -->
+            <line x1="0" y1="200" x2="1000" y2="200" stroke="black" stroke-width="2"/>
+            
+            <!-- Incident light beam -->
+            <line x1="400" y1="0" x2="500" y2="200" stroke="black" stroke-width="2"/>
+            <polygon points="500,200 490,190 510,190" fill="black"/>
+            
+            <!-- Refracted light beams -->
+            <path d="M500,200 L950,550" stroke="#FF0000" stroke-width="2"/>
+            <path d="M500,200 L850,550" stroke="#FF4500" stroke-width="2"/>
+            <path d="M500,200 L750,550" stroke="#FFA500" stroke-width="2"/>
+            <path d="M500,200 L650,550" stroke="#FFFF00" stroke-width="2"/>
+            <path d="M500,200 L550,550" stroke="#00FF00" stroke-width="2"/>
+            <path d="M500,200 L450,550" stroke="#0000FF" stroke-width="2"/>
+            <path d="M500,200 L350,550" stroke="#4B0082" stroke-width="2"/>
+            <path d="M500,200 L250,550" stroke="#9400D3" stroke-width="2"/>
+            
+            <!-- Labels -->
+            <text x="400" y="190" text-anchor="middle" font-size="20">air</text>
+            <text x="600" y="230" text-anchor="middle" font-size="20">water</text>
+            
+            <!-- AS7341 Wavelength Labels -->
+            <text x="950" y="570" text-anchor="middle" font-size="16" fill="#FF0000">680nm</text>
+            <text x="850" y="570" text-anchor="middle" font-size="16" fill="#FF4500">630nm</text>
+            <text x="750" y="570" text-anchor="middle" font-size="16" fill="#FFA500">590nm</text>
+            <text x="650" y="570" text-anchor="middle" font-size="16" fill="#FFFF00">555nm</text>
+            <text x="550" y="570" text-anchor="middle" font-size="16" fill="#00FF00">515nm</text>
+            <text x="450" y="570" text-anchor="middle" font-size="16" fill="#0000FF">480nm</text>
+            <text x="350" y="570" text-anchor="middle" font-size="16" fill="#4B0082">445nm</text>
+            <text x="250" y="570" text-anchor="middle" font-size="16" fill="#9400D3">415nm</text>
+        </svg>
+    </div>
+</body>
+</html>
